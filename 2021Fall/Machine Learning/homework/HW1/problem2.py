@@ -9,11 +9,17 @@ y_data = mat.get('y')
 
 def partition_dataset(x, y, training_set_size):
     total_size = len(x)
-    x_training_data = x[0: training_set_size]
-    y_training_data = y[0: training_set_size]
+    random_shuffled_index = numpy.arange(len(x))
+    numpy.random.shuffle(random_shuffled_index)
+    x_training_data = x[random_shuffled_index[0: training_set_size]]
+    y_training_data = y[random_shuffled_index[0: training_set_size]]
+    # x_training_data = x[0: training_set_size]
+    # y_training_data = y[0: training_set_size]
 
-    x_testing_data = x[training_set_size: total_size + 1]
-    y_testing_data = y[training_set_size: total_size + 1]
+    x_testing_data = x[random_shuffled_index[training_set_size: total_size + 1]]
+    y_testing_data = y[random_shuffled_index[training_set_size: total_size + 1]]
+    # x_testing_data = x[training_set_size: total_size + 1]
+    # y_testing_data = y[training_set_size: total_size + 1]
     return [x_training_data, y_training_data, x_testing_data, y_testing_data]
 
 
@@ -35,7 +41,7 @@ def evaluate_model(x, y, model):
 
 
 def display_results(y, yy):
-    matplotlib.pyplot.figure(figsize=(25, 16))
+    # matplotlib.pyplot.figure(figsize=(25, 16))
 
     matplotlib.pyplot.scatter(numpy.arange(len(y)), y, label='train error', marker='o')
     matplotlib.pyplot.scatter(numpy.arange(len(yy)), yy, label='test error', marker='x', c='r')
@@ -63,8 +69,8 @@ for reg_factor in range(0, 1001):
 # print("testing Error is: \n", eval_error)
 
 # display_results(test_y, predicted_y)
-train_error_vec.reverse()
-test_error_vec.reverse()
+# train_error_vec.reverse()
+# test_error_vec.reverse()
 
 display_results(train_error_vec, test_error_vec)
 matplotlib.pyplot.legend(fontsize='xx-large', loc='upper right')

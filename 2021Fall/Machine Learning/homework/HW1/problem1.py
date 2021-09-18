@@ -21,15 +21,15 @@ def partition_dataset(x,
     total_size = len(x)
     random_shuffled_index = numpy.arange(len(x))
     numpy.random.shuffle(random_shuffled_index)
-    # x_training_data = x[random_shuffled_index[0: training_set_size]]
-    # y_training_data = y[random_shuffled_index[0: training_set_size]]
-    x_training_data = x[0: training_set_size]
-    y_training_data = y[0: training_set_size]
+    x_training_data = x[random_shuffled_index[0: training_set_size]]
+    y_training_data = y[random_shuffled_index[0: training_set_size]]
+    # x_training_data = x[0: training_set_size]
+    # y_training_data = y[0: training_set_size]
 
-    # x_testing_data = x[random_shuffled_index[training_set_size: total_size + 1]]
-    # y_testing_data = y[random_shuffled_index[training_set_size: total_size + 1]]
-    x_testing_data = x[training_set_size: total_size + 1]
-    y_testing_data = y[training_set_size: total_size + 1]
+    x_testing_data = x[random_shuffled_index[training_set_size: total_size + 1]]
+    y_testing_data = y[random_shuffled_index[training_set_size: total_size + 1]]
+    # x_testing_data = x[training_set_size: total_size + 1]
+    # y_testing_data = y[training_set_size: total_size + 1]
     return [x_training_data, y_training_data, x_testing_data, y_testing_data]
 
 
@@ -65,8 +65,6 @@ def display_results(x_test, y_test, x_model, y_model):
     matplotlib.pyplot.scatter(x_test, y_test, label='test data', marker='o')
     matplotlib.pyplot.scatter(x_model, y_model, label='model generated data')
 
-    # matplotlib.pyplot.grid()
-
 
 [x_train_data, y_train_data, x_test_data, y_test_data] = partition_dataset(x_data, y_data, train_set_size)
 [model, training_error] = polynomial_regression(x_train_data, y_train_data, polynomial_order)
@@ -95,13 +93,15 @@ tmp_testloss = numpy.resize(numpy.array(test_loss), (len(test_loss, )))
 # matplotlib.pyplot.plot(train_loss, 'r', label='train loss')
 # matplotlib.pyplot.plot(test_loss, 'b', label='test loss')
 
-matplotlib.pyplot.scatter(range(len(train_loss)), tmp_trainloss, c='r', label='train loss')
-matplotlib.pyplot.scatter(range(len(train_loss)), tmp_testloss, c='b', label='test loss')
+matplotlib.pyplot.plot(range(len(train_loss)), tmp_trainloss, c='r', label='train loss')
+matplotlib.pyplot.plot(range(len(train_loss)), tmp_testloss, c='b', label='test loss')
 
 matplotlib.pyplot.legend(fontsize='xx-large', loc='upper right')
+matplotlib.pyplot.grid()
 matplotlib.pyplot.show()
 # test_xxx = numpy.arange(-50, 51)
 # test_xxx = numpy.resize(test_xxx, (test_xxx.shape[0], 1))
 # test_yyy = numpy.polyval(model, test_xxx)
 # matplotlib.pyplot.plot(test_xxx, test_yyy, label='model generated data', color='g', linewidth=5)
 # matplotlib.pyplot.show()
+
