@@ -55,7 +55,7 @@ matplotlib.pyplot.subplot(1, 2, 1)
 matplotlib.pyplot.plot(list(range(len(loss_stat))), loss_stat, label='Training loss')
 matplotlib.pyplot.plot(list(range(len(classify_stat))), classify_stat, label='Binary classification error')
 matplotlib.pyplot.legend(fontsize='xx-large', loc='upper right')
-matplotlib.pyplot.title("Training loss and Binary classification error", fontsize=20)
+matplotlib.pyplot.title("Training loss and Binary classification error", fontsize=10)
 
 matplotlib.pyplot.subplot(1, 2, 2)
 x_positive = []
@@ -83,14 +83,14 @@ matplotlib.pyplot.plot(t_series, ft_list, c='k', label='Boundary line')
 dist_sign = (numpy.matmul(x_data, params) > 0).astype(numpy.int64)
 classify_error_cnt = numpy.linalg.norm(y_data - dist_sign, ord=1).astype(numpy.int64)
 matplotlib.pyplot.title("Classification Error Number is: {}\n Logistic Classification Boundary line is shown "
-                        "below".format(classify_error_cnt), fontsize=20)
+                        "below".format(classify_error_cnt), fontsize=10)
 
 info_str = "Learning rate is: {}, Tolerance is: {} \nTotal iteration num is: {}\n Params are: [{:.3f}, {:.3f}, {:.3f}]"\
     .format(lr, margin, iter_nums,
             params[0, 0],
             params[1, 0],
             params[2, 0])
-matplotlib.pyplot.suptitle(info_str, fontsize=20)
+matplotlib.pyplot.suptitle(info_str, fontsize=10)
 
-matplotlib.pyplot.legend(fontsize='xx-large', loc='upper right')
+matplotlib.pyplot.legend(fontsize='large', loc='upper right')
 matplotlib.pyplot.show()
