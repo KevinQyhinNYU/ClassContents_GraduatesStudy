@@ -44,7 +44,7 @@ def gradient_descent(x, y, theta, learning_rate, tolerance):
 
 
 lr = 1
-margin = 0.01
+margin = 0.001
 params = numpy.random.rand(x_data.shape[1], 1)
 [params, loss_stat, iter_nums, classify_stat] = gradient_descent(x_data, y_data, params, lr, margin)
 
