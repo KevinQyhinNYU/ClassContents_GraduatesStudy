@@ -42,11 +42,47 @@ q_4 = numpy.matmul(R_40, q_0) + p_0
 print("q_4 is : \n", q_4)
 print("\n")
 
-T_04 = numpy.array([[-0.04487593, -0.01604671, 0.99886368, -0.54945160], [0.77277141, 0.63309504, 0.04488894, 0.66528422], [-0.63309597, 0.77390773, -0.01601028, -0.33452981], [0.00000000, 0.00000000, 0.00000000, 1.00000000]])
-p_4 = numpy.array([[0.34722157], [0.09087700], [0.75403028], [0.0]])
-p_0 = numpy.matmul(numpy.linalg.inv(T_04), p_4)
+T_04 = numpy.array([[0.93206637, 0.27038449, -0.24113171, -0.82928384], [0.16835921, 0.26608178, 0.94913416, 0.45283116],
+                    [0.32079191, -0.92525278, 0.20248416, -0.56450363], [0.000000, 0.00000000, 0.00000000, 1.00000000]])
+p_4 = numpy.array([[0], [1], [1], [1]])
+p_0 = numpy.matmul(T_04, p_4)
 print("p_0 is : \n", p_0)
 print("\n")
 
 M = numpy.matrix([[2], [2]])
 print(get_rotation_matrix(numpy.pi / 6.0) * M)
+
+
+def get_inverse_of_transformation(transformation):
+    rotation = transformation[0: 3, 0: 3]
+    rotation = rotation.transpose()
+
+    translation = transformation[0:3, 3]
+    translation = numpy.resize(translation, (3, 1))
+
+    const = numpy.array([[0, 0, 0, 1]])
+
+    result = numpy.append(rotation, numpy.matmul(-rotation, translation), axis=1)
+    result = numpy.append(result, const, axis=0)
+    return result
+
+
+T_8in0 = numpy.array([[0.42734620, -0.52768407, 0.73411494, -0.15899131], [-0.90189692, -0.30532058, 0.30555081, 0.24010015], [0.06290610, -0.79267198, -0.60639423, 0.90700601], [0.00000000, 0.00000000, 0.00000000, 1.00000000]])
+T_6in8 = numpy.array([[-0.77961294, -0.57815721, -0.24070293, -0.14187170], [0.00816554, 0.37493194, -0.92701638, -0.10927903], [0.62620842, -0.72467944, -0.28758083, -0.54832063], [0.00000000, 0.00000000, 0.00000000, 1.00000000]])
+
+pose_6in0 = numpy.matmul(T_8in0, T_6in8)
+
+
+
+def get_rotation_matrix_of_axis(theta, axis_type): # 0, 1, 2 for x, y, z
+    if axis_type == 0:
+        result = numpy.array([[1, 0, 0], [0, numpy.cos(theta), -numpy.sin(theta)], [0, numpy.sin(theta), numpy.cos(theta)]])
+    elif axis_type == 1:
+        result = numpy.array([[numpy.cos(theta), 0, numpy.sin(theta)], [0, 1, 0], [-numpy.sin(theta), 0, numpy.cos(theta)]])
+    else:
+        result = numpy.array([[numpy.cos(theta), -numpy.sin(theta), 0], [numpy.sin(theta), numpy.cos(theta), 0], [0, 0, 1]])
+    return result
+
+
+euler_angle = numpy.matmul(numpy.matmul(get_rotation_matrix_of_axis(0.61, 1), get_rotation_matrix_of_axis(-3.07, 0)),
+                               get_rotation_matrix_of_axis(-2.1, 2))
