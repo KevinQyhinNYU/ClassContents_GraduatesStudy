@@ -31,6 +31,7 @@ def gradient_descent(x, y, theta, learning_rate, tolerance):
     while numpy.linalg.norm(theta - last_theta, ord=1) >= tolerance:
         if iteration != 1:
             last_theta = theta
+
         theta = theta - (learning_rate / n) * numpy.matmul(x.transpose(), (sigmoid(numpy.matmul(x, theta)) - y))
 
         distances = (numpy.matmul(x, theta) > 0).astype(numpy.int64)
@@ -85,7 +86,7 @@ classify_error_cnt = numpy.linalg.norm(y_data - dist_sign, ord=1).astype(numpy.i
 matplotlib.pyplot.title("Classification Error Number is: {}\n Logistic Classification Boundary line is shown "
                         "below".format(classify_error_cnt), fontsize=10)
 
-info_str = "Learning rate is: {}, Tolerance is: {} \nTotal iteration num is: {}\n Params are: [{:.3f}, {:.3f}, {:.3f}]"\
+info_str = "Learning rate is: {}, Tolerance is: {} \nTotal iteration num is: {}\n Params are: [{:.3f}, {:.3f}, {:.3f}]" \
     .format(lr, margin, iter_nums,
             params[0, 0],
             params[1, 0],
