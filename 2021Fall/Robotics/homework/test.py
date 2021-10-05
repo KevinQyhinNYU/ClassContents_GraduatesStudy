@@ -19,15 +19,15 @@ def check_if_rotation_matrix(mat):
 
 
 R1 = numpy.matrix([[0.76852530, 0.14901919, -0.34157729], [-0.28941616, 0.85881182, 0.10018243],
-               [0.26190624, -0.07990144, 0.69005302]])
+                   [0.26190624, -0.07990144, 0.69005302]])
 R2 = numpy.matrix([[-0.50849128, 0.83494196, -0.21049592], [0.18924893, 0.34684950, 0.91862956],
-               [0.84001277, 0.42727899, -0.33438182]])
+                   [0.84001277, 0.42727899, -0.33438182]])
 R3 = numpy.matrix([[-0.59991548, 0.15483486, 0.78493795], [-0.70273769, -0.57095371, -0.42446626],
-               [0.38244106, -0.80624936, 0.45133226]])
+                   [0.38244106, -0.80624936, 0.45133226]])
 R4 = numpy.matrix([[-0.87497713, -0.47070661, -0.11335921], [0.43575148, -0.66354445, -0.60813601],
-               [0.21103477, -0.58150154, 0.78569732]])
+                   [0.21103477, -0.58150154, 0.78569732]])
 R5 = numpy.matrix([[-0.14091741, -0.84568600, -0.66265077], [-0.23418136, 0.74713955, -0.64246995],
-               [0.95853887, 0.13011092, -0.28765377]])
+                   [0.95853887, 0.13011092, -0.28765377]])
 
 print("Is {} a rotation matrix: \n".format("R1"), check_if_rotation_matrix(R1))
 print("Is {} a rotation matrix: \n".format("R2"), check_if_rotation_matrix(R2))
@@ -42,8 +42,9 @@ q_4 = numpy.matmul(R_40, q_0) + p_0
 print("q_4 is : \n", q_4)
 print("\n")
 
-T_04 = numpy.array([[0.93206637, 0.27038449, -0.24113171, -0.82928384], [0.16835921, 0.26608178, 0.94913416, 0.45283116],
-                    [0.32079191, -0.92525278, 0.20248416, -0.56450363], [0.000000, 0.00000000, 0.00000000, 1.00000000]])
+T_04 = numpy.array(
+    [[0.93206637, 0.27038449, -0.24113171, -0.82928384], [0.16835921, 0.26608178, 0.94913416, 0.45283116],
+     [0.32079191, -0.92525278, 0.20248416, -0.56450363], [0.000000, 0.00000000, 0.00000000, 1.00000000]])
 p_4 = numpy.array([[0], [1], [1], [1]])
 p_0 = numpy.matmul(T_04, p_4)
 print("p_0 is : \n", p_0)
@@ -67,22 +68,42 @@ def get_inverse_of_transformation(transformation):
     return result
 
 
-T_8in0 = numpy.array([[0.42734620, -0.52768407, 0.73411494, -0.15899131], [-0.90189692, -0.30532058, 0.30555081, 0.24010015], [0.06290610, -0.79267198, -0.60639423, 0.90700601], [0.00000000, 0.00000000, 0.00000000, 1.00000000]])
-T_6in8 = numpy.array([[-0.77961294, -0.57815721, -0.24070293, -0.14187170], [0.00816554, 0.37493194, -0.92701638, -0.10927903], [0.62620842, -0.72467944, -0.28758083, -0.54832063], [0.00000000, 0.00000000, 0.00000000, 1.00000000]])
+T_8in0 = numpy.array(
+    [[0.42734620, -0.52768407, 0.73411494, -0.15899131], [-0.90189692, -0.30532058, 0.30555081, 0.24010015],
+     [0.06290610, -0.79267198, -0.60639423, 0.90700601], [0.00000000, 0.00000000, 0.00000000, 1.00000000]])
+T_6in8 = numpy.array(
+    [[-0.77961294, -0.57815721, -0.24070293, -0.14187170], [0.00816554, 0.37493194, -0.92701638, -0.10927903],
+     [0.62620842, -0.72467944, -0.28758083, -0.54832063], [0.00000000, 0.00000000, 0.00000000, 1.00000000]])
 
 pose_6in0 = numpy.matmul(T_8in0, T_6in8)
 
 
-
-def get_rotation_matrix_of_axis(theta, axis_type): # 0, 1, 2 for x, y, z
+def get_rotation_matrix_of_axis(theta, axis_type):  # 0, 1, 2 for x, y, z
     if axis_type == 0:
-        result = numpy.array([[1, 0, 0], [0, numpy.cos(theta), -numpy.sin(theta)], [0, numpy.sin(theta), numpy.cos(theta)]])
+        result = numpy.array(
+            [[1, 0, 0], [0, numpy.cos(theta), -numpy.sin(theta)], [0, numpy.sin(theta), numpy.cos(theta)]])
     elif axis_type == 1:
-        result = numpy.array([[numpy.cos(theta), 0, numpy.sin(theta)], [0, 1, 0], [-numpy.sin(theta), 0, numpy.cos(theta)]])
+        result = numpy.array(
+            [[numpy.cos(theta), 0, numpy.sin(theta)], [0, 1, 0], [-numpy.sin(theta), 0, numpy.cos(theta)]])
     else:
-        result = numpy.array([[numpy.cos(theta), -numpy.sin(theta), 0], [numpy.sin(theta), numpy.cos(theta), 0], [0, 0, 1]])
+        result = numpy.array(
+            [[numpy.cos(theta), -numpy.sin(theta), 0], [numpy.sin(theta), numpy.cos(theta), 0], [0, 0, 1]])
     return result
 
 
 euler_angle = numpy.matmul(numpy.matmul(get_rotation_matrix_of_axis(0.61, 1), get_rotation_matrix_of_axis(-3.07, 0)),
-                               get_rotation_matrix_of_axis(-2.1, 2))
+                           get_rotation_matrix_of_axis(-2.1, 2))
+
+
+def get_skew_symmetric_mat(vec):
+    result = numpy.array([[0, -vec[2, 0], vec[1, 0]], [vec[2, 0], 0, -vec[0, 0]], [-vec[1, 0], vec[0, 0], 0]])
+    return result
+
+
+R_1in0 = numpy.array([[0.12229620, 0.98969219, -0.07451852], [0.27020693, 0.03904476, 0.96201025], [0.95500359, -0.13778562, -0.26264666]])
+w_01in1 = numpy.array([[-0.00244846], [-0.63578447], [0.48684212]])
+
+omega = numpy.array([[-0.36], [-1.01], [2.64]])
+# HW3_result = numpy.matmul(numpy.matmul(numpy.matmul(R_1in0, get_skew_symmetric_mat(w_01in1)), R_1in0.T), R_1in0)
+HW3_result = get_skew_symmetric_mat(w_01in1)
+print("R_dot is: \n", HW3_result)
