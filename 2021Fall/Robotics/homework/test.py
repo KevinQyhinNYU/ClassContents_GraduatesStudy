@@ -100,10 +100,73 @@ def get_skew_symmetric_mat(vec):
     return result
 
 
-R_1in0 = numpy.array([[0.12229620, 0.98969219, -0.07451852], [0.27020693, 0.03904476, 0.96201025], [0.95500359, -0.13778562, -0.26264666]])
-w_01in1 = numpy.array([[-0.00244846], [-0.63578447], [0.48684212]])
+def get_vector_from_skew_symmetric(mat):
+    result = numpy.array([[mat[2, 1]], [mat[0, 2]], [mat[1, 0]]])
+    return result
+
 
 omega = numpy.array([[-0.36], [-1.01], [2.64]])
 # HW3_result = numpy.matmul(numpy.matmul(numpy.matmul(R_1in0, get_skew_symmetric_mat(w_01in1)), R_1in0.T), R_1in0)
-HW3_result = get_skew_symmetric_mat(w_01in1)
-print("R_dot is: \n", HW3_result)
+# HW3_result = get_skew_symmetric_mat(w_01in1)
+# print("R_dot is: \n", HW3_result)
+
+
+def rodrigues_form(axis_angle, theta):
+    bracket_operator = get_skew_symmetric_mat(axis_angle)
+    return numpy.identity(3) + numpy.sin(theta) * bracket_operator + (1 - numpy.cos(theta)) * numpy.matmul(bracket_operator, bracket_operator)
+
+
+# w01 = numpy.array([[-0.21], [1.16], [-1.60]])
+# t = 10.65
+# rotation_angle = numpy.linalg.norm(w01)
+# rotation_axis = w01 / rotation_angle
+# HW3_problem3_result = rodrigues_form(rotation_axis, rotation_angle * t)
+
+
+def log_of_rotation_matrix(rotation_mat):
+    theta = numpy.arccos((numpy.matrix.trace(rotation_mat) - 1) / 2)
+    axis = get_vector_from_skew_symmetric((rotation_mat - rotation_mat.T) / (2 * numpy.sin(theta)))
+    return [axis, theta]
+
+
+rot_mat = numpy.array([[0.65093810, -0.66366101, -0.36855618], [0.69554411, 0.32690008, 0.63980835], [-0.30413481, -0.67282271, 0.67439723]])
+[hw3_5_result_axis, hw3_5_result_angle] = log_of_rotation_matrix(rot_mat)
+
+R_1in0 = numpy.array([[0.99880318, -0.04370834, 0.02194972], [0.04665725, 0.98609619, -0.15949107], [-0.01467345, 0.16032430, 0.98695532]])
+R_2in0 = numpy.array([[0.97010405, 0.20222396, 0.13417752], [-0.22808140, 0.94861503, 0.21933627], [-0.08292776, -0.24338240, 0.96637880]])
+[result36_axis, result36_angle] = log_of_rotation_matrix(numpy.matmul(R_2in0.T, R_1in0))
+# result36_axis = numpy.matmul(numpy.matmul(R_2in0.T, R_1in0), result36_axis)
+import modern_robotics as mr
+
+R_1in0 = numpy.array([[-0.18685007, -0.13353350, -0.97327070], [0.73083368, -0.68094371, -0.04688061], [-0.65648243, -0.72005865, 0.22482516]])
+w_01in1 = numpy.array([[-0.68697302], [-0.30906209], [0.14097058]])
+hw34_result = numpy.matmul(R_1in0, -w_01in1)
+
+
+R01 = numpy.array([[0.418555270341, 0.770432834293, 0.480879125678], [-0.483644164980, -0.259079447783, 0.836041961517], [0.768700076331, -0.582504152414, 0.264176276508]])
+w0 = numpy.array([[0.210000000000], [-1.180000000000], [2.950000000000]])
+t = 7.430000000000
+p1 = numpy.array([[0.640000000000], [-2.870000000000], [0.000000000000]])
+
+p0 = numpy.matmul(R01, p1)
+
+rotation_angle = numpy.linalg.norm(w0)
+rotation_axis = w0 / rotation_angle
+# rotation_matrix = rodrigues_form(rotation_axis, t * rotation_angle)
+
+rotation_matrix = numpy.matmul(rodrigues_form(rotation_axis, t * rotation_angle), R01)
+result_position = numpy.matmul(rotation_matrix, p1)
+
+# result_position = numpy.matmul(rotation_matrix.T, result_position)
+# result_position = numpy.matmul(numpy.matmul(rodrigues_form(rotation_axis, t * rotation_angle), R01),  p1)
+result_velocity = numpy.matmul(get_skew_symmetric_mat(w0), result_position)
+
+# result_position = numpy.matmul(rotation_matrix.T, result_position)
+# result_velocity = numpy.matmul(get_skew_symmetric_mat(numpy.matmul(R01, w1)), result_position) #求 p1(t), v1(t)
+
+# result_velocity = numpy.matmul(rotation_matrix.T, result_velocity)
+# tmpp = numpy.array([[1.3], [-2.51], [2.99]])
+
+
+# numpy.matmul(R01, result_position) rotate with frame1 , require frame 0
+# numpy.matmul(R01, result_velocity)
