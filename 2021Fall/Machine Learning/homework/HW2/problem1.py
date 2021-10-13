@@ -95,7 +95,7 @@ def stochastic_gradient_descent(x, y, theta, bias, learning_rate):
 
 theta_param = np.random.rand(x_data.shape[1], 1)
 bias_param = np.random.rand(1, 1)
-lr = 0.001
+lr = 0.01
 [theta_param, bias_param, iter_num, classification_loss, perceptron_loss] = gradient_descent(x_data, y_data,
                                                                                              theta_param,
                                                                                              bias_param, lr)
