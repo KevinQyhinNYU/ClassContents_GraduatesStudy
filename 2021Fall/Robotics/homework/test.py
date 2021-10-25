@@ -136,7 +136,6 @@ R_1in0 = numpy.array([[0.99880318, -0.04370834, 0.02194972], [0.04665725, 0.9860
 R_2in0 = numpy.array([[0.97010405, 0.20222396, 0.13417752], [-0.22808140, 0.94861503, 0.21933627], [-0.08292776, -0.24338240, 0.96637880]])
 [result36_axis, result36_angle] = log_of_rotation_matrix(numpy.matmul(R_2in0.T, R_1in0))
 # result36_axis = numpy.matmul(numpy.matmul(R_2in0.T, R_1in0), result36_axis)
-import modern_robotics as mr
 
 R_1in0 = numpy.array([[-0.18685007, -0.13353350, -0.97327070], [0.73083368, -0.68094371, -0.04688061], [-0.65648243, -0.72005865, 0.22482516]])
 w_01in1 = numpy.array([[-0.68697302], [-0.30906209], [0.14097058]])
