@@ -89,4 +89,4 @@ MODULE_AUTHOR("Yinhong Qin");
 MODULE_DESCRIPTION("The contents of CS 6223 homework 3, problem2.");
 
 
-//This code is finished by Yinhong Qin, with netID yq2021 and student ID N14457656.
+//This code is finished by Yinhong Qin, with netID yq2021.
