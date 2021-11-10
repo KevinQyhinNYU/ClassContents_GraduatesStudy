@@ -1,7 +1,7 @@
 import numpy
 import numpy as np
 
-eps = 1e-7
+eps = 1e-5
 
 
 def get_rotation_matrix(theta):
@@ -208,12 +208,102 @@ hw5_1_result = np.matmul(exp_of_twist_vector(twist_vec), T_01_0)
 
 
 # problem 4
-T_01_0 = np.array([[-1, 0, 0, -4], [0, 0, 1, 0], [0, 1, 0, 6], [0, 0, 0, 1]])
-twist_1 = np.array([[0], [-1], [0], [2], [0], [2]])
-twist_2 = np.array([[0], [0], [0], [0], [-1], [0]])
-twist_3 = np.array([[0], [0], [0], [0], [0], [1]])
-thetas = np.array([[-0.13, 0.06, -0.12]])
+T_01_0 = np.array([[0, 1, 0, -2], [-1, 0, 0, 0], [0, 0, 1, -4], [0, 0, 0, 1]])
+twist_1 = np.array([[-1], [0], [0], [0], [0], [0]])
+twist_2 = np.array([[0], [-1], [0], [0], [0], [4]])
+twist_3 = np.array([[0], [-1], [0], [2], [0], [2]])
+thetas = np.array([[-0.26000000, 0.24000000, 0.62000000]])
 
 hw5_4_result = np.matmul(exp_of_twist_vector(twist_3 * thetas[0, 2]), T_01_0)
 hw5_4_result = np.matmul(exp_of_twist_vector(twist_2 * thetas[0, 1]), hw5_4_result)
 hw5_4_result = np.matmul(exp_of_twist_vector(twist_1 * thetas[0, 0]), hw5_4_result)
+
+T_2_in_0 = np.array([[-0.39161000, -0.81674292, -0.42376008, 0.36056999], [-0.10549836, -0.41765068, 0.90246219, 0.13076578], [-0.91406329, 0.39811922, 0.07739114, 0.12649139], [0.00000000, 0.00000000, 0.00000000, 1.00000000]])
+
+T12 = np.matmul(get_inverse_of_transformation(hw5_4_result), T_2_in_0)
+
+[rot1, trans1] = get_rotation_and_translation_from_transform_matrix(hw5_4_result)
+[rot2, trans2] = get_rotation_and_translation_from_transform_matrix(T_2_in_0)
+distance = np.linalg.norm(trans1 - trans2)
+
+# HW 6
+# Problem 2
+dtheta = -0.39
+screw_axis = np.array([[0], [0], [0], [0], [1], [0]])
+hw6_2_result = screw_axis * dtheta
+T_sb = np.array([[-1, 0, 0, -2], [0, 0, 1, 0], [0, 1, 0, -2], [0, 0, 0, 1]])
+hw6_2_result = np.matmul(get_adjoint_representation_of_transformation(get_inverse_of_transformation(T_sb)), hw6_2_result)
+
+# Problem 3
+theta = np.array([[0.11000000], [0.64000000], [-0.53000000], [-0.79000000], [-0.11000000], [-0.45000000], [0.23000000], [0.03000000], [0.08000000]])
+dtheta = np.array([[-0.52000000], [0.40000000], [0.57000000], [-0.84000000], [0.13000000], [-0.16000000], [0.81000000], [-0.63000000], [0.26000000]])
+jacobian = np.array([[0.00000000, -0.02692881, -0.97685182, 0.00000000, -0.13051632,  0.95234177, 0.00239708, 0.99680171, -0.00000000], [0.00000000, 0.12013991, 0.20759098, 0.00000000, -0.38711935,  -0.30495638, 0.02989957, -0.07991469, -0.00000000], [0.00000000, 0.99239168, -0.05163830, 0.00000000, 0.91274537, 0.00683830,  0.99955003, -0.00000000, 1.00000000], [-0.75358851, -0.43184181, -0.48964581, -0.13051632, -1.15917798,  -0.00896494, -3.98630977, -0.00000000, 0.00000000], [-0.65471033, 3.34636289, -2.51687613, -0.38711935, 3.23972567,  0.07299397, 2.31868693, -0.00000000, 2.00000000], [0.05881105, -0.41683211, -0.85536088, 0.91274537, 1.20829848,  4.50370211, -0.05979913, 2.15982939, 0.00000000]])
+T_1in0 = np.array([[0.65679464, -0.74627125, 0.10816663, 3.88998167], [-0.75358851, -0.65471033, 0.05881105, -0.71601314], [0.02692881, -0.12013991, -0.99239168, 2.45171674], [0.00000000, 0.00000000, 0.00000000, 1.00000000]])
+hw6_3_result = np.matmul(get_adjoint_representation_of_transformation(T_1in0), np.matmul(jacobian, dtheta))
+
+# Problem 4
+theta = np.array([[-0.26000000], [0.24000000], [0.62000000]])
+dtheta = np.array([[0.12795753], [0.45883433], [0.15448126]])
+spatial_screw_axis = np.array([[-1, 0, 0], [0, 0, 0], [0, 0, 0], [0, -1, 0], [0, 0, -1], [0, 0, 0]])
+multi_mat = np.identity(4)
+Spatial_Jacobian = np.array([[], [], [], [], [], []])
+
+for i in range(0, 3):
+    screw_axis = spatial_screw_axis[:, i]
+    screw_axis = np.resize(screw_axis, (6, 1))
+
+    Jacobian_i = np.matmul(get_adjoint_representation_of_transformation(multi_mat), screw_axis)
+
+    Spatial_Jacobian = np.append(Spatial_Jacobian, Jacobian_i, axis=1)
+    if i != 2:
+        multi_mat = np.matmul(multi_mat, exp_of_twist_vector(screw_axis * theta[i]))
+
+
+body_screw_axis = np.array([[0, 0, 0], [-1, 0, 0], [0, 0, 0], [4, 0, 1], [0, -1, 0], [0, 0, 0]])
+body_screw_axis_2 = np.resize(body_screw_axis[:, 2], (6, 1))
+body_screw_axis_1 = np.resize(body_screw_axis[:, 1], (6, 1))
+body_screw_axis_0 = np.resize(body_screw_axis[:, 0], (6, 1))
+
+Body_Jacobian_2 = body_screw_axis_2
+Body_Jacobian_1 = np.matmul(get_adjoint_representation_of_transformation(get_inverse_of_transformation(exp_of_twist_vector(body_screw_axis_2 * theta[2]))), body_screw_axis_1)
+tmpMat = np.matmul(get_inverse_of_transformation(exp_of_twist_vector(body_screw_axis_2 * theta[2])), get_inverse_of_transformation(exp_of_twist_vector(body_screw_axis_1 * theta[1])))
+Body_Jacobian_0 = np.matmul(get_adjoint_representation_of_transformation(tmpMat), body_screw_axis_0)
+Body_Jacobian = np.append(Body_Jacobian_0, np.append(Body_Jacobian_1, Body_Jacobian_2, axis=1), axis=1)
+
+# Waste
+
+# R_0 = np.array([[-0.09357520, 0.99285489, -0.07404627], [-0.37694995, -0.10416650, -0.92035758], [-0.92149466, -0.05821090, 0.38400401]])
+# R_1 = np.array([[-0.09357520, -0.37694995, -0.92149466], [0.99285489, -0.10416650, -0.05821090], [-0.07404627, -0.92035758, 0.38400401]])
+# R_2 = np.array([[-0.34421484, -0.42542507, 0.52851159], [0.13978150, -0.04668462, -0.46924688], [0.94733750, -0.13341728, 0.80009817]])
+# R_3 = np.array([[0.56064421, 0.52738543, -0.27336646], [-0.73235060, -0.61820324, 0.83480724], [0.72441223, -0.25041119, 0.43096606]])
+#
+# M = np.array([[0.19860057, 0.86927278, -0.45268383, -2.01604063], [-0.62982488, 0.46708315, 0.62060773, -1.66702011], [0.75091839, 0.16185849, 0.64025260, -0.19014183], [0.00000000, 0.00000000, 0.00000000, 1.00000000]])
+# V_s = np.array([[-0.61399203], [-0.46576343], [-0.76459553], [-0.19144771], [0.03994459], [0.53406147]])
+# test_result = np.matmul(exp_of_twist_vector(V_s), M)
+
+# midterm 1.8 answer is
+#
+# 1.     [[-1.        ,  0.        ,  0.        ],
+#        [ 0.        ,  0.        ,  0.        ],
+#        [ 0.        ,  0.        ,  0.        ],
+#        [ 0.        , -1.        ,  0.        ],
+#        [ 0.        ,  0.        , -0.96638998],
+#        [ 0.        ,  0.        , -0.25708055]]
+#
+# 2.     [[ 0.  ,  0.  ,  0.  ],
+#        [-1.  ,  0.  ,  0.  ],
+#        [ 0.  ,  0.  ,  0.  ],
+#        [ 4.  ,  0.  ,  1.  ],
+#        [ 0.  , -1.  ,  0.  ],
+#        [ 0.62,  0.  ,  0.  ]]
+#
+# 3.     [[-0.12795753],
+#        [ 0.        ],
+#        [ 0.        ],
+#        [-0.45883433],
+#        [-0.14928914],
+#        [-0.03971413]]
+#
+# 4.     [[ 0.34597528],
+#        [-0.29936071],
+#        [ 0.34772418]]
