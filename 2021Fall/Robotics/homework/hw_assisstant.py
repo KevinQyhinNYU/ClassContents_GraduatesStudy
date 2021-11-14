@@ -186,14 +186,14 @@ def log_of_twist_matrix(twist_matrix):
 # V_inb = np.matmul(get_adjoint_representation_of_transformation(get_inverse_of_transformation(T_sb)), V_sb_in_s)
 # hw4_8_result = np.matmul(get_bracket_of_twist_vector(V_inb), q_B)
 
-# t = 1.13289126
-# T_1in0 = np.array([[-0.03490204, -0.28636706, 0.95748407, -0.25986619], [-0.99562334, 0.09307340, -0.00845563, -0.85298021], [-0.08669488, -0.95358862, -0.28836219, -0.84704426], [0.00000000, 0.00000000, 0.00000000, 1.00000000]])
-# p_2in0 = np.array([-1.09934784, 0.08752813, -1.50066555])
-# R_2in0 = np.array([[0.81711787, 0.06079288, 0.57325614], [-0.11881654, 0.99083305, 0.06428457], [-0.56409309, -0.12064038, 0.81685059]])
-# p_2in0 = np.resize(p_2in0, (3, 1))
-# T_2in0 = np.append(np.append(R_2in0, p_2in0, axis=1), np.array([[0, 0, 0, 1]]), axis=0)
-# T_12 = np.matmul(get_inverse_of_transformation(T_1in0), T_2in0)
-# hw4_5_result = log_of_twist_matrix(T_12) / t
+t = 2.92185510
+T_1in0 = np.array([[0.29168105, 0.81610731, 0.49888979, 0.86272871], [0.89158226, -0.04307703, -0.45080533, 0.41182782], [-0.34641484, 0.57629266, -0.74019155, -0.13041287], [0.00000000, 0.00000000, 0.00000000, 1.00000000]])
+p_2in0 = np.array([-0.11837483, -1.36839026, -0.20222991])
+R_2in0 = np.array([[-0.19154060, -0.23650310, 0.95256416], [0.27421688, -0.94478015, -0.17943124], [0.94239976, 0.22684080, 0.24581690]])
+p_2in0 = np.resize(p_2in0, (3, 1))
+T_2in0 = np.append(np.append(R_2in0, p_2in0, axis=1), np.array([[0, 0, 0, 1]]), axis=0)
+T_12 = np.matmul(get_inverse_of_transformation(T_1in0), T_2in0)
+hw4_5_result = log_of_twist_matrix(T_12) / t
 
 # HW 5
 # problem 1

@@ -153,3 +153,4 @@ def log_of_twist_matrix(twist_matrix):
         linear_velocity = rotation_angle * np.matmul(A_inverse_mat, translation)
         # linear_velocity = np.matmul(A_inverse_mat, translation)
     return np.append(angular_velocity, linear_velocity, axis=0)
+
