@@ -210,6 +210,14 @@ class RoboticArm:
             if i != self.degree_Of_FreeDom - 1:
                 multi_mat = np.matmul(multi_mat, exp_of_twist_vector(screw_axis * theta[i]))
 
+    def compute_third_frame_jacobian(self, translation_vector):
+        self.compute_spatial_jacobian(self.configurations)
+        jacobian_s = self.get_spatial_jacobian()
+        third_frame = get_transformation_matrix_from_rotation_and_translation(np.identity(3), translation_vector)
+        jacobian_new = np.matmul(get_adjoint_representation_of_transformation(get_inverse_of_transformation(third_frame)), jacobian_s)
+
+        return jacobian_new
+
     def compute_inverse_kinematics_positions(self, desired_position):
         configuration_list = []
         self.configurations = np.zeros(self.degree_Of_FreeDom)
@@ -226,10 +234,7 @@ class RoboticArm:
         if np.linalg.norm(desired_position) > np.linalg.norm(self.initial_position):
             while np.linalg.norm(trans - last_trans) > epsilon:
                 last_trans = trans
-                self.compute_spatial_jacobian(self.configurations)
-                jacobian_s = self.get_spatial_jacobian()
-                third_frame = get_transformation_matrix_from_rotation_and_translation(np.identity(3), trans)
-                jacobian_new = np.matmul(get_adjoint_representation_of_transformation(get_inverse_of_transformation(third_frame)), jacobian_s)
+                jacobian_new = self.compute_third_frame_jacobian(trans)
                 jacobian_x_part = jacobian_new[3:6, :]
 
                 delta_theta = np.matmul(jacobian_x_part.T, desired_position - trans)
@@ -239,9 +244,6 @@ class RoboticArm:
 
                 self.forward_kinematics(self.configurations)
                 [rot, trans] = get_rotation_and_translation_from_transform_matrix(self.get_end_effector_pose())
-                # print("\n\nIteration No. \n", iter_num)
-                # print("Joint is: \n", self.configurations)
-                # print("Error is: \n", np.linalg.norm(trans - desired_position))
                 iter_num = iter_num + 1
         else:
             while np.linalg.norm(trans - desired_position) > epsilon2:
@@ -259,73 +261,52 @@ class RoboticArm:
 
                 self.forward_kinematics(self.configurations)
                 [rot, trans] = get_rotation_and_translation_from_transform_matrix(self.get_end_effector_pose())
-                # print("\n\nIteration No. \n", iter_num)
-                # print("Joint is: \n", self.configurations)
-                # print("Error is: \n", np.linalg.norm(trans - desired_position))
                 iter_num = iter_num + 1
 
         return [configuration_list, iter_num]
 
-    def ik_solution_regularization_method(self, desired_position):
+    def ik_solution_regularization_method(self, desired_position, desired_configurations=None):
         configuration_list = []
         self.configurations = np.zeros(self.degree_Of_FreeDom)
-        configuration_list.append(self.configurations)
-        epsilon = 0.000001
-        learning_rate = 1
-        iter_num = 1
-        lambda_coef = 0.1
-
-        self.forward_kinematics(self.configurations)
-        [rot, trans] = get_rotation_and_translation_from_transform_matrix(self.get_end_effector_pose())
-
-        while np.linalg.norm(trans - desired_position) > epsilon:
-            self.compute_spatial_jacobian(self.configurations)
-            jacobian_s = self.get_spatial_jacobian()
-            third_frame = get_transformation_matrix_from_rotation_and_translation(np.identity(3), trans)
-            jacobian_new = np.matmul(get_adjoint_representation_of_transformation(get_inverse_of_transformation(third_frame)), jacobian_s)
-            jacobian_x_part = jacobian_new[3:6, :]
-            J_mat = np.matmul(jacobian_x_part.T, np.linalg.inv(np.matmul(jacobian_x_part, jacobian_x_part.T) + lambda_coef * np.identity(jacobian_x_part.shape[0])))
-
-            delta_theta = np.matmul(J_mat, desired_position - trans)
-            delta_theta = np.resize(delta_theta, (self.degree_Of_FreeDom,))
-            self.configurations = self.configurations + learning_rate * delta_theta
-            configuration_list.append(self.configurations)
-
-            self.forward_kinematics(self.configurations)
-            [rot, trans] = get_rotation_and_translation_from_transform_matrix(self.get_end_effector_pose())
-            # print("\n\nIteration No. \n", iter_num)
-            # print("Joint is: \n", self.configurations)
-            # print("Error is: \n", np.linalg.norm(trans - desired_position))
-            iter_num = iter_num + 1
-
-        return [self.configurations, iter_num]
-
-    def ik_solution_with_nullspace(self, desired_position, desired_configuration):
-        configuration_list = []
-        self.configurations = np.zeros(self.degree_Of_FreeDom)
-        # self.configurations = desired_configuration
         configuration_list.append(self.configurations)
         epsilon = 0.0001
-        epsilon2 = 0.01
-        learning_rate = 0.1
+        learning_rate = 1
         iter_num = 1
+        lambda_coef = 0.01
 
         self.forward_kinematics(self.configurations)
         [rot, trans] = get_rotation_and_translation_from_transform_matrix(self.get_end_effector_pose())
         last_trans = trans - 1
 
-        while np.linalg.norm(trans - last_trans) > epsilon:
-        # while np.linalg.norm(trans - desired_position) > epsilon2:
-            last_trans = trans
-            self.compute_spatial_jacobian(self.configurations)
-            jacobian_s = self.get_spatial_jacobian()
-            third_frame = get_transformation_matrix_from_rotation_and_translation(np.identity(3), trans)
-            jacobian_new = np.matmul(get_adjoint_representation_of_transformation(get_inverse_of_transformation(third_frame)), jacobian_s)
-            jacobian_x_part = jacobian_new[3:6, :]
-            jacobian_pinv = np.linalg.pinv(jacobian_x_part)
+        while True:
+            # Judge if still need iteration
+            if np.linalg.norm(desired_position) > np.linalg.norm(self.initial_position):
+                learning_rate = 0.1
+                # print("error is: ", np.linalg.norm(trans - desired_position))
+                # print("iter is: ", iter_num)
+                if np.linalg.norm(trans - last_trans) < 1e-5:
+                    break
+            else:
+                if np.linalg.norm(trans - desired_position) < epsilon:
+                    break
 
-            null_space_projection_mat = np.identity(jacobian_x_part.shape[1]) - np.matmul(jacobian_pinv, jacobian_x_part)
-            delta_theta = np.matmul(jacobian_pinv, desired_position - trans) + np.matmul(null_space_projection_mat, desired_configuration - self.configurations)
+            last_trans = trans
+            jacobian_new = self.compute_third_frame_jacobian(trans)
+            jacobian_x_part = jacobian_new[3:6, :]
+            J_mat = np.matmul(jacobian_x_part.T, np.linalg.inv(np.matmul(jacobian_x_part, jacobian_x_part.T)
+                                                               + lambda_coef * np.identity(jacobian_x_part.shape[0])))
+            # J_mat = np.matmul(jacobian_new.T, np.linalg.inv(np.matmul(jacobian_new, jacobian_new.T) +
+            #                                                 lambda_coef * np.identity(jacobian_new.shape[0])))
+            # jacobian_x_part = J_mat[:, 3:6]
+
+            delta_theta = np.matmul(J_mat, desired_position - trans)
+            # delta_theta = np.matmul(jacobian_x_part, desired_position - trans)
+
+            if desired_configurations is not None:
+                spatial_jacobian = self.get_spatial_jacobian()
+                spatial_jacobian_pinv = np.linalg.pinv(spatial_jacobian)
+                nullspace_projector = np.identity(self.degree_Of_FreeDom) - np.matmul(spatial_jacobian_pinv, spatial_jacobian)
+                delta_theta = delta_theta + np.matmul(nullspace_projector, desired_configurations)
 
             delta_theta = np.resize(delta_theta, (self.degree_Of_FreeDom,))
             self.configurations = self.configurations + learning_rate * delta_theta
@@ -333,10 +314,6 @@ class RoboticArm:
 
             self.forward_kinematics(self.configurations)
             [rot, trans] = get_rotation_and_translation_from_transform_matrix(self.get_end_effector_pose())
-            # print("\n\nIteration No. \n", iter_num)
-            # print("Joint is: \n", self.configurations)
-            # print("Error is: \n", np.linalg.norm(trans - desired_position))
             iter_num = iter_num + 1
 
         return [configuration_list, iter_num]
-
