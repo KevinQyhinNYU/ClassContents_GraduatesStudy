@@ -20,12 +20,16 @@ def test_unit(test_data, method):
         [theta_list, iter_num1] = robot.compute_inverse_kinematics_positions(test_position)
     elif method == "regularized":
         [theta_list, iter_num1] = robot.ik_solution_regularization_method(test_position)
+    elif method == "revised":
+        [ik_solution, iter_num1] = robot.compute_IK_position(test_position)
 
-    ik_solution = theta_list[-1]
+    if method != "revised":
+        ik_solution = theta_list[-1]
 
     robot.forward_kinematics(ik_solution)
     validating_ans = robot.get_end_effector_pose()
     [r1, t1] = get_rotation_and_translation_from_transform_matrix(validating_ans)
+    print("Method is: ", method)
     print("error is: ", np.linalg.norm(test_position - t1))
     print("iter is: ", iter_num1)
 
@@ -39,10 +43,10 @@ with open('desired_end_effector_positions.npy', 'rb') as f:
     desired_endeff = np.load(f)
 
 
-selected_data = desired_endeff[:, [0]]
-test_unit(selected_data, "normal")
+selected_data = desired_endeff[:, [7]]
+# test_unit(selected_data, "normal")
 test_unit(selected_data, "regularized")
-
+test_unit(selected_data, "revised")
 
 # Check if the goal position could be reached
 norm_list = []
@@ -53,8 +57,8 @@ for i in range(desired_endeff.shape[1]):
 desired_configurations = np.array([1, 1, -1, -1, 1, 1, 1])
 desired_configurations = np.resize(desired_configurations, (7, 1))
 
-[theta_list, iter_num1] = robot.ik_solution_regularization_method(selected_data, desired_configurations)
-ik_solution = theta_list[-1]
+[ik_solution, iter_num1] = robot.compute_IK_position_nullspace(selected_data, desired_configurations)
+ik_solution = normalize_joint_configuration(ik_solution)
 
 robot.forward_kinematics(ik_solution)
 validating_ans = robot.get_end_effector_pose()

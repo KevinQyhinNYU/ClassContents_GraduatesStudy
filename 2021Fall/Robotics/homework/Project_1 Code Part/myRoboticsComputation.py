@@ -168,11 +168,20 @@ class RoboticArm:
     def __init__(self, name_string, dof, starting_position):
         self.name = name_string
         self.degree_Of_FreeDom = dof
-        self.configurations = np.zeros(dof)
+        self.configurations = np.zeros(dof).reshape(7, 1)
         self.initial_position = starting_position
 
     def get_end_effector_pose(self):
         return self.endEffector_pose
+
+    def get_joint_angles(self):
+        return self.configurations
+
+    def get_spatial_jacobian(self):
+        return self.spatial_Jacobian
+
+    def set_joint_angles(self, thetas):
+        self.configurations = thetas
 
     def initialize_screw_axis(self, axis: np.array):
         if axis.shape[0] != 6:
@@ -185,20 +194,19 @@ class RoboticArm:
             self.spatial_screw_axis.append(axis[:, [i]])
 
     def forward_kinematics(self, theta: np.array):
+        self.set_joint_angles(theta)
         axes = self.spatial_screw_axis.copy()
         initial_translation = np.resize(self.initial_position, (3, 1))
         self.endEffector_pose = get_transformation_matrix_from_rotation_and_translation(np.identity(3), initial_translation)
 
         for i in range(self.degree_Of_FreeDom):
             screw_axis = axes.pop()
-            self.endEffector_pose = np.matmul(exp_of_twist_vector(screw_axis * theta[self.degree_Of_FreeDom - i - 1]),
+            self.endEffector_pose = np.matmul(exp_of_twist_vector(screw_axis * self.configurations[self.degree_Of_FreeDom - i - 1]),
                                               self.endEffector_pose)
-
-    def get_spatial_jacobian(self):
-        return self.spatial_Jacobian
 
     def compute_spatial_jacobian(self, theta: np.array):
         self.spatial_Jacobian = np.array([[], [], [], [], [], []])
+        self.set_joint_angles(theta)
         axes = self.spatial_screw_axis.copy()
         multi_mat = np.identity(4)
 
@@ -208,7 +216,7 @@ class RoboticArm:
             self.spatial_Jacobian = np.append(self.spatial_Jacobian, Jacobian_i, axis=1)
 
             if i != self.degree_Of_FreeDom - 1:
-                multi_mat = np.matmul(multi_mat, exp_of_twist_vector(screw_axis * theta[i]))
+                multi_mat = np.matmul(multi_mat, exp_of_twist_vector(screw_axis * self.configurations[i]))
 
     def compute_third_frame_jacobian(self, translation_vector):
         self.compute_spatial_jacobian(self.configurations)
@@ -218,9 +226,91 @@ class RoboticArm:
 
         return jacobian_new
 
+    def compute_IK_position(self, desired_position):
+        # Joint angles initialization
+        self.set_joint_angles(np.zeros(self.degree_Of_FreeDom).reshape(7, 1))
+
+        # Set hyper parameters
+        step_size = 0.1
+        iteration_num = 1000
+        epsilon = 1e-4
+        regularization_coef = 1e-5
+
+        # If the desired position cannot be reached, change to less step size
+        if np.linalg.norm(desired_position) > np.linalg.norm(self.initial_position):
+            step_size = 0.02
+            regularization_coef = 0.0005
+
+        # Iteration process
+        for i in range(iteration_num):
+            # If we are close to desired position, then break
+            self.forward_kinematics(self.configurations)
+            [rotation, translation] = get_rotation_and_translation_from_transform_matrix(self.get_end_effector_pose())
+            if np.linalg.norm(desired_position - translation) < epsilon:
+                break
+
+            # Compute jacobian at the third frame
+            jacobian_new = self.compute_third_frame_jacobian(translation)
+
+            # Compute the pseudo inverse of the last 3 rows of this jacobian
+            jacobian_x_part = jacobian_new[3:6, :]
+            jacobian_pinv = np.matmul(jacobian_x_part.T, np.linalg.inv(np.matmul(jacobian_x_part, jacobian_x_part.T) +
+                                                                       regularization_coef * np.identity(jacobian_x_part.shape[0])))
+
+            # Update the joint_angles
+            position_error = desired_position - translation
+            delta_theta = np.matmul(jacobian_pinv, position_error)
+            self.configurations = self.configurations + step_size * delta_theta
+
+        return [self.configurations, i]
+
+    def compute_IK_position_nullspace(self, desired_position, desired_configuration):
+        # Joint angles initialization
+        self.set_joint_angles(np.zeros(self.degree_Of_FreeDom).reshape(7, 1))
+
+        # Set hyper parameters
+        step_size = 0.1
+        iteration_num = 1000
+        epsilon = 1e-4
+        regularization_coef = 1e-5
+
+        # If the desired position cannot be reached, change to less step size
+        if np.linalg.norm(desired_position) > np.linalg.norm(self.initial_position):
+            step_size = 0.02
+            regularization_coef = 0.0005
+
+        # Iteration process
+        for i in range(iteration_num):
+            # If we are close to desired position, then break
+            self.forward_kinematics(self.configurations)
+            [rotation, translation] = get_rotation_and_translation_from_transform_matrix(self.get_end_effector_pose())
+            if np.linalg.norm(desired_position - translation) < epsilon:
+                break
+
+            # Compute jacobian at the third frame
+            jacobian_new = self.compute_third_frame_jacobian(translation)
+
+            # Compute the pseudo inverse of the last 3 rows of this jacobian
+            jacobian_x_part = jacobian_new[3:6, :]
+            jacobian_pinv = np.matmul(jacobian_x_part.T, np.linalg.inv(np.matmul(jacobian_x_part, jacobian_x_part.T) +
+                                                                       regularization_coef * np.identity(jacobian_x_part.shape[0])))
+
+            # Update the joint_angles with nullspace projector
+            position_error = desired_position - translation
+            delta_theta = np.matmul(jacobian_pinv, position_error)
+
+            joint_angle_error = desired_configuration - self.configurations
+            nullspace_projector = np.identity(self.degree_Of_FreeDom) - np.matmul(jacobian_pinv, jacobian_x_part)
+
+            delta_theta = delta_theta + np.matmul(nullspace_projector, joint_angle_error)
+            self.configurations = self.configurations + step_size * delta_theta
+
+        return [self.configurations, i]
+
+
     def compute_inverse_kinematics_positions(self, desired_position):
         configuration_list = []
-        self.configurations = np.zeros(self.degree_Of_FreeDom)
+        self.set_joint_angles(np.zeros(self.degree_Of_FreeDom).reshape(7, 1))
         configuration_list.append(self.configurations)
         epsilon = 0.0001
         epsilon2 = 0.000001
@@ -238,7 +328,7 @@ class RoboticArm:
                 jacobian_x_part = jacobian_new[3:6, :]
 
                 delta_theta = np.matmul(jacobian_x_part.T, desired_position - trans)
-                delta_theta = np.resize(delta_theta, (self.degree_Of_FreeDom,))
+                # delta_theta = np.resize(delta_theta, (self.degree_Of_FreeDom,))
                 self.configurations = self.configurations + learning_rate * delta_theta
                 configuration_list.append(self.configurations)
 
@@ -255,7 +345,7 @@ class RoboticArm:
                 jacobian_pinv = np.linalg.pinv(jacobian_x_part)
 
                 delta_theta = np.matmul(jacobian_pinv, desired_position - trans)
-                delta_theta = np.resize(delta_theta, (self.degree_Of_FreeDom, ))
+                # delta_theta = np.resize(delta_theta, (self.degree_Of_FreeDom, ))
                 self.configurations = self.configurations + learning_rate * delta_theta
                 configuration_list.append(self.configurations)
 
@@ -267,10 +357,10 @@ class RoboticArm:
 
     def ik_solution_regularization_method(self, desired_position, desired_configurations=None):
         configuration_list = []
-        self.configurations = np.zeros(self.degree_Of_FreeDom)
+        self.set_joint_angles(np.zeros(self.degree_Of_FreeDom).reshape(7, 1))
         configuration_list.append(self.configurations)
-        epsilon = 0.0001
-        learning_rate = 1
+        epsilon = 1e-6
+        learning_rate = 1.2
         iter_num = 1
         lambda_coef = 0.01
 
@@ -278,18 +368,10 @@ class RoboticArm:
         [rot, trans] = get_rotation_and_translation_from_transform_matrix(self.get_end_effector_pose())
         last_trans = trans - 1
 
-        while True:
-            # Judge if still need iteration
-            if np.linalg.norm(desired_position) > np.linalg.norm(self.initial_position):
-                learning_rate = 0.1
-                # print("error is: ", np.linalg.norm(trans - desired_position))
-                # print("iter is: ", iter_num)
-                if np.linalg.norm(trans - last_trans) < 1e-5:
-                    break
-            else:
-                if np.linalg.norm(trans - desired_position) < epsilon:
-                    break
+        if np.linalg.norm(desired_position) > np.linalg.norm(self.initial_position):
+            learning_rate = 0.1
 
+        while np.linalg.norm(trans - last_trans) > epsilon:
             last_trans = trans
             jacobian_new = self.compute_third_frame_jacobian(trans)
             jacobian_x_part = jacobian_new[3:6, :]
@@ -297,20 +379,26 @@ class RoboticArm:
                                                                + lambda_coef * np.identity(jacobian_x_part.shape[0])))
             # J_mat = np.matmul(jacobian_new.T, np.linalg.inv(np.matmul(jacobian_new, jacobian_new.T) +
             #                                                 lambda_coef * np.identity(jacobian_new.shape[0])))
-            # jacobian_x_part = J_mat[:, 3:6]
+            # jacobian_x_part_pinv = J_mat[:, 3:6]
 
             delta_theta = np.matmul(J_mat, desired_position - trans)
-            # delta_theta = np.matmul(jacobian_x_part, desired_position - trans)
+            # delta_theta = np.matmul(jacobian_x_part_pinv, desired_position - trans)
 
             if desired_configurations is not None:
-                spatial_jacobian = self.get_spatial_jacobian()
-                spatial_jacobian_pinv = np.linalg.pinv(spatial_jacobian)
-                nullspace_projector = np.identity(self.degree_Of_FreeDom) - np.matmul(spatial_jacobian_pinv, spatial_jacobian)
-                delta_theta = delta_theta + np.matmul(nullspace_projector, desired_configurations)
+                # spatial_jacobian = self.get_spatial_jacobian()
+                # spatial_jacobian_pinv = np.linalg.pinv(spatial_jacobian)
 
-            delta_theta = np.resize(delta_theta, (self.degree_Of_FreeDom,))
+                nullspace_projector = np.identity(7) - np.matmul(J_mat, jacobian_x_part)
+                # nullspace_projector = np.identity(7) - np.matmul(jacobian_x_part_pinv, jacobian_x_part)
+                configuration_error = desired_configurations - self.configurations.reshape(7, 1)
+                # print("configuration_error is: ", configuration_error)
+                delta_theta = delta_theta + np.matmul(nullspace_projector, configuration_error)
+
+            # delta_theta = np.resize(delta_theta, (self.degree_Of_FreeDom,))
             self.configurations = self.configurations + learning_rate * delta_theta
             configuration_list.append(self.configurations)
+            # print("error is: ", np.linalg.norm(desired_position - trans))
+            # print("iter is: ", iter_num)
 
             self.forward_kinematics(self.configurations)
             [rot, trans] = get_rotation_and_translation_from_transform_matrix(self.get_end_effector_pose())
