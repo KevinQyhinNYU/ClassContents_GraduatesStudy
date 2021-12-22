@@ -65,3 +65,8 @@ validating_ans = robot.get_end_effector_pose()
 [r1, t1] = get_rotation_and_translation_from_transform_matrix(validating_ans)
 print("error1 is: ", np.linalg.norm(selected_data - t1))
 print("iter1 is: ", iter_num1)
+
+M = np.array([[-0.62938175, -0.43657478, 0.64286940, -2.64180803], [-0.34944977, 0.89791139, 0.26765649, -0.94732414], [-0.69409183, -0.05619245, -0.71769000, 0.02189382], [0.00000000, 0.00000000, 0.00000000, 1.00000000]])
+V_b = np.array([[0.61093402], [0.01265028], [-0.82493961], [-0.85938570], [-0.66997692], [0.15096138]])
+V_s = np.matmul(get_adjoint_representation_of_transformation(M), V_b)
+hw4_3_result = np.matmul(M, exp_of_twist_vector(V_b))
