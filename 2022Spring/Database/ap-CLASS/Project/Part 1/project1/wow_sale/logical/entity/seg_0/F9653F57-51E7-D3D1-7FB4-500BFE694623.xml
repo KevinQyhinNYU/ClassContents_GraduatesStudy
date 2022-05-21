@@ -1,0 +1,252 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F9653F57-51E7-D3D1-7FB4-500BFE694623" name="ZCQ_rental_service">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:22:23 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="service_id" id="A71CDE49-405A-A407-D7A5-E1856B611D57">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:23:45 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="p_date" id="59B9270F-484A-A510-5ECA-8ED46EFA512B">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:25:32 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="d_date" id="74D74ADA-F636-A421-B0ED-F516BA63572B">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:25:51 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="s_odometer" id="29EC8A7F-F3E8-17FE-1352-E1C0E528D92D">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:26:07 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="e_odometer" id="4CFA9397-A582-F7B6-6FC7-3E38401CF4AF">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:26:57 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="odometer_limit" id="EF53C05A-BE42-A5DA-BE6B-97AD8AE368E6">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:27:14 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="VIN" id="6EF6DEA6-E529-08B9-7A2A-B9E15DA51217">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:03:39 UTC</createdTime>
+<generatorID>CAB75185-DE82-6131-9FFA-04C76966A99E</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<referedAttribute>A5A52B42-2D38-53F8-AB86-FD3A4EEE1750</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="class_id" id="668BC8CF-64E8-F2A3-83AE-1275E054A0F4">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:03:39 UTC</createdTime>
+<generatorID>CAB75185-DE82-6131-9FFA-04C76966A99E</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<referedAttribute>428CAE85-C13E-3B0A-25A1-D4EDC4FA9B05</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ofc_id" id="44C643C5-189F-FEF8-F444-25FE96D7BA48">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:03:39 UTC</createdTime>
+<generatorID>CAB75185-DE82-6131-9FFA-04C76966A99E</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<referedAttribute>19162EC0-7146-C840-DDCF-A257C6240448</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ofc_id1" id="76E7C504-2809-B55D-F30C-CB79EDA32D5D">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:04:13 UTC</createdTime>
+<generatorID>B0217611-16C6-C7D0-2F30-0FE30B46786F</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<referedAttribute>FFE39619-582C-C472-7091-2E666D5AD14A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ofc_id2" id="D1E296FE-699F-5DC7-841C-5EC5DE52A3B2">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:04:39 UTC</createdTime>
+<generatorID>42AEEBEB-1E8F-1732-E0C7-3520FAA708E6</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<referedAttribute>FFE39619-582C-C472-7091-2E666D5AD14A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="invo_id" id="9ABC4C93-56B7-D0E0-CFE2-55E0E7201962">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:07:25 UTC</createdTime>
+<generatorID>E22C655E-4CD8-7F62-2D5E-36368ABD8A34</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<referedAttribute>1C1BDD79-3B6E-B6D2-0B18-88F4D91A5F38</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="coupon_id" id="03218721-B956-2680-271A-CE92B3A8EBFA">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:10:07 UTC</createdTime>
+<generatorID>AD840759-B3E8-50B0-D3C6-51A999EAEB2B</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>640D7132-31F5-26B7-5C68-5F06096854DB</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="c_id" id="75A73526-218C-2D31-C3CD-B425BDB501BD">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:11:03 UTC</createdTime>
+<generatorID>3A838C38-E563-1AEF-9499-7008BF3A1705</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<referedAttribute>EF53F564-E6D2-7C27-721D-5A20E522B910</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ofc_id11" id="E58D8473-B9EC-DFD9-2031-904EF2E1818F">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:19:34 UTC</createdTime>
+<generatorID>CAB75185-DE82-6131-9FFA-04C76966A99E</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<referedAttribute>C62C8F68-1113-646C-45B4-9801099D072D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="46EDD4C5-AA4C-8A51-0995-FC4CEC2A3BD5" name="ZCQ_rental_service PK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:24:07 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>A71CDE49-405A-A407-D7A5-E1856B611D57</attributeRef>
+<attributeRef>6EF6DEA6-E529-08B9-7A2A-B9E15DA51217</attributeRef>
+<attributeRef>668BC8CF-64E8-F2A3-83AE-1275E054A0F4</attributeRef>
+<attributeRef>44C643C5-189F-FEF8-F444-25FE96D7BA48</attributeRef>
+<attributeRef>E58D8473-B9EC-DFD9-2031-904EF2E1818F</attributeRef>
+<attributeRef>76E7C504-2809-B55D-F30C-CB79EDA32D5D</attributeRef>
+<attributeRef>D1E296FE-699F-5DC7-841C-5EC5DE52A3B2</attributeRef>
+<attributeRef>75A73526-218C-2D31-C3CD-B425BDB501BD</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="B1D032D0-BC4B-F7E1-91AF-346710577260" containerWithKeyObject="DCD078A4-CE9B-C54E-9D2A-B9FDE384B8B6" localFKIndex="60A0C2B6-9FE2-02AF-08DB-20661E4E8EB9" name="ZCQ_individual_ZCQ_customer_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>76E2C902-FA4C-C8D6-7685-E36FA1C003C2</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<referredTableLongName>ZCQ_customer</referredTableLongName>
+<arc>D648B6AB-F6AA-DC05-F086-6ED5E9E54534</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>D1393E83-CE27-42F9-9974-678F7BE016F5</referredTableID>
+<keyObject>59DB6B74-0E08-7B2A-E4D9-FAB2CDD666C9</keyObject>
+<referredKeyID>59DB6B74-0E08-7B2A-E4D9-FAB2CDD666C9</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>c_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorValue>I</discriminatorValue>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

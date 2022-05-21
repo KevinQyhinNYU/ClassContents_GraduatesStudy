@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E33D2C2A-1B8B-368F-1509-29D74D3AE64E" name="ZCQ_coupon_cust">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>E0443462-90CC-750B-38FF-DA602B4B3618</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="c_id" id="89DC6ED2-478A-C908-E9E8-0567A8611210">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>07FB6686-BBE5-4AA4-E24F-BA3F60C63AFD</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0B883532-4447-26C9-C78C-136B79B7BF25" referredColumn="6F6FA631-36AF-C384-36FB-F26D43B1A5F2"/>
+</associations>
+</Column>
+<Column name="coupon_id" id="48BC67E1-6395-4E8C-35B6-6F51F399BDA2">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>B7032A63-2BE6-3D89-2A73-9B35F814B9B4</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1B103046-9E60-7236-D6B9-FCFD95C7D685" referredColumn="83650C2E-8A35-BEC2-8B72-2A759287F928"/>
+</associations>
+</Column>
+<Column name="coupon_type" id="5B4448CD-14D3-B506-D7A5-51DDEB0B521B">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>0ACF812E-554B-FF2D-1615-616D7A755EE2</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E5D5F554-CFB5-3501-0D42-5DC99F9B9ECF" name="ZCQ_coupon_cust_PK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>F5CDB65A-4789-65ED-9D4C-C6AABF0F491F</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="89DC6ED2-478A-C908-E9E8-0567A8611210"/>
+<colUsage columnID="48BC67E1-6395-4E8C-35B6-6F51F399BDA2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="482C99CE-BF77-0FCC-C81B-F7A6EAFA5AB6" name="ZCQ_coupon_cust_ZCQ_coupon_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>5828FA61-C250-A21F-711C-33DDD1E1B4B8</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="48BC67E1-6395-4E8C-35B6-6F51F399BDA2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1E495B54-D0C7-1FF7-8BAD-CCAEA0F4F7AA" name="ZCQ_coupon_cust_ZCQ_customer_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>BBC11B3F-CDF7-AC04-26F7-8EA2322F20A6</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="89DC6ED2-478A-C908-E9E8-0567A8611210"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

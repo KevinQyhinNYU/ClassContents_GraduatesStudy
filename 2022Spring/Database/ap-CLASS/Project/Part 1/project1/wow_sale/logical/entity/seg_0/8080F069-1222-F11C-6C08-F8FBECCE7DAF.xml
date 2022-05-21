@@ -1,0 +1,124 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8080F069-1222-F11C-6C08-F8FBECCE7DAF" name="ZCQ_office">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:06:07 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ofc_id" id="FFE39619-582C-C472-7091-2E666D5AD14A">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:06:17 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="street_addr" id="ACBA5FC5-9236-7FF6-F951-647B4BA39FC0">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:06:31 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="phone_no" id="BCB38750-174A-7D93-2A64-77F77414F6D7">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:19:35 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="country" id="67C8017F-F079-D641-3AA2-FF98D9C51549">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:20:44 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="state" id="AAC47C81-5D56-AD47-5995-0741707F3B0E">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:21:08 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="city" id="FCA6128A-CD92-33E6-4872-EC156193CBBA">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:21:24 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="zip_code" id="DC9EC5E4-FA50-C6CE-0773-9917707E1561">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:21:35 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="063B517D-4A2B-A02E-E6CD-559F4F27047B" name="ZCQ_office PK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:06:29 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>FFE39619-582C-C472-7091-2E666D5AD14A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

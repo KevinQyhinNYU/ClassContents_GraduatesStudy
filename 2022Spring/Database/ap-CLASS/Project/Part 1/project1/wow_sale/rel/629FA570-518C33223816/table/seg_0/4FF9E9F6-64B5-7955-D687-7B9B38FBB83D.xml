@@ -1,0 +1,100 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4FF9E9F6-64B5-7955-D687-7B9B38FBB83D" name="ZCQ_corp_emp">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>6AE641EB-9C73-17C9-965C-171D7D318C74</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="c_id" id="53C92F9B-80FC-1172-93F4-1DB16D412CE9">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>EF53F564-E6D2-7C27-721D-5A20E522B910</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E7047B16-E8A7-9DCD-A3A9-D5B07693CE26" referredColumn="6F6FA631-36AF-C384-36FB-F26D43B1A5F2"/>
+</associations>
+</Column>
+<Column name="employee_id" id="57A1417B-88A7-0D58-EA00-2ABAB0BC0DD8">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>BBD8B3DB-CC72-E5A0-8E50-2134595068C3</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="corporate_ID" id="EA03C956-FD7E-C4B3-0491-D1FA1B8161F5">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="corp_id" id="11313296-FE39-5AB0-B3C1-93A3738D8BBE">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 21:01:11 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7BA493E1-67FA-AD54-CA23-2D7FFC1304E9" referredColumn="641E5D42-A3FE-537B-16E1-DF02EA837D4A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4F607179-6B45-1BF1-B245-A0BBE4225C0D" name="ZCQ_corp_emp_PK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>DC5F7A26-8B99-A6DE-93D9-00837B1C21D4</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="53C92F9B-80FC-1172-93F4-1DB16D412CE9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8FE86855-83AE-7DEA-6C3F-4451DB1E154C" name="ZCQ_corp_emp_ZCQ_customer_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>5C1189D7-223E-F13F-E12F-9932D021A369</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="53C92F9B-80FC-1172-93F4-1DB16D412CE9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="943E7FFB-67AE-B8CA-500B-AA7AFBFEA60F" name="ZCQ_corp_emp_ZCQ_corporate_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>AF03CC55-AD59-9835-5E37-AF169DDDCD00</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="11313296-FE39-5AB0-B3C1-93A3738D8BBE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

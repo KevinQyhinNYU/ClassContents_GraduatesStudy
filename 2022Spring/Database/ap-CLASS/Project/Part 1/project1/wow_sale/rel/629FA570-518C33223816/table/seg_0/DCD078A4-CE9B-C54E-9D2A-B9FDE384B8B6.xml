@@ -1,0 +1,90 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DCD078A4-CE9B-C54E-9D2A-B9FDE384B8B6" name="ZCQ_individual">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>D628CAD0-A253-E061-1B46-1C77F8D61085</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="c_id" id="F221AC65-27F6-383D-66AD-6CB90B45E204">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>EF53F564-E6D2-7C27-721D-5A20E522B910</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B1D032D0-BC4B-F7E1-91AF-346710577260" referredColumn="6F6FA631-36AF-C384-36FB-F26D43B1A5F2"/>
+</associations>
+</Column>
+<Column name="DLN" id="DB0142E1-D925-8C66-63AB-09365599FC9B">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<commentInRDBMS><![CDATA[driver license]]></commentInRDBMS>
+<generatorID>8FED7931-8623-DB09-29ED-676CFB991102</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="insrc_company" id="1FFE15CC-7B01-33E3-000A-6F4E4959F0BF">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>194558FC-9023-7EB9-4296-BCD6F0A94802</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="insrc_no" id="AEFD3133-0B36-2964-A658-2066AC656EAF">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<commentInRDBMS><![CDATA[insurance policy number]]></commentInRDBMS>
+<generatorID>56B7CE59-1088-1836-6E90-003139AF2269</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7997EB24-1C7E-4586-C2F7-E7452857340D" name="ZCQ_individual_PK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>DC5F7A26-8B99-A6DE-93D9-00837B1C21D4</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F221AC65-27F6-383D-66AD-6CB90B45E204"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="60A0C2B6-9FE2-02AF-08DB-20661E4E8EB9" name="ZCQ_individual_ZCQ_customer_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>76E2C902-FA4C-C8D6-7685-E36FA1C003C2</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F221AC65-27F6-383D-66AD-6CB90B45E204"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

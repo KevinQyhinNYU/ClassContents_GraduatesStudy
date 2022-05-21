@@ -1,0 +1,114 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0DC784FC-F605-2BD8-F725-F1FC3B0317EC" name="ZCQ_payment">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>50DB4B14-9A76-6F25-BDB8-F106C816F602</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="pay_id" id="3A66A85C-9171-6D20-A5FB-9EADD9DF34A3">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>3F315921-D2B4-B081-E29E-FE6F3B30C831</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date" id="64452152-10F0-1F25-8CB7-0DA68F68E277">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>BD40547C-0673-34D2-71A8-CA36F3BF3735</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="method" id="B6213A5C-4FF7-85CE-363E-0002B4B4BB99">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>076EC696-2C60-3A4A-E453-5EFF2546557B</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="amount" id="60140C4E-F42B-5F04-F172-D39DE3433F6C">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>14A8B876-9388-F107-1FA7-72162AD4A640</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,20,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="card_no" id="B72A4FF1-9CAA-AF5B-75E6-8D8691EF18ED">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>149D3A10-10FE-D1CB-56CA-E84579FE8913</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ZCQ_invoice_invo_id" id="18841A8A-BD68-E2DD-7CB9-82D671C5D040">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>2261B83C-4F2D-A2D9-5367-E8A903444586</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BC2D4540-6E82-CF6C-E3E8-88B69F2049AC" referredColumn="D8B1C517-E50A-4DF2-3354-57B59AEE1BEF"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A8878B28-0991-6565-6FB7-3498DD9F8957" name="ZCQ_payment_PK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>E89C862D-85A9-8DB5-27F9-E26969A1D288</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3A66A85C-9171-6D20-A5FB-9EADD9DF34A3"/>
+<colUsage columnID="18841A8A-BD68-E2DD-7CB9-82D671C5D040"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="66351195-3DDD-3710-1ABA-20CBB906D452" name="ZCQ_payment_ZCQ_invoice_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>B064FD85-E527-B29B-16B9-9CA1D226B4E6</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="18841A8A-BD68-E2DD-7CB9-82D671C5D040"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

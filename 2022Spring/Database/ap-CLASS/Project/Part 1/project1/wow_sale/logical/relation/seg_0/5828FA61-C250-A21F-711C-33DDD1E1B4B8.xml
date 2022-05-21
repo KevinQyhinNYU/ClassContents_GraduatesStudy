@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="ZCQ_coupon_cust_relation" directorySegmentName="seg_0" id="5828FA61-C250-A21F-711C-33DDD1E1B4B8">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:08:26 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<sourcePk>36682423-EBE7-6069-DEC3-431EA9F5A2CC</sourcePk>
+<identifying>true</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>8C3BB523-B0E9-C152-7B0C-AB08C1B9DC1C</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>E0443462-90CC-750B-38FF-DA602B4B3618</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

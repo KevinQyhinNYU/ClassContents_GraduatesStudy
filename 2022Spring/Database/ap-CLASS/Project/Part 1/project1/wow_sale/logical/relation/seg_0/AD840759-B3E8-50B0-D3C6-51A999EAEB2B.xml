@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="ZCQ_service_coupont_relation" directorySegmentName="seg_0" id="AD840759-B3E8-50B0-D3C6-51A999EAEB2B">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:09:53 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<sourcePk>46EDD4C5-AA4C-8A51-0995-FC4CEC2A3BD5</sourcePk>
+<targetPk>36682423-EBE7-6069-DEC3-431EA9F5A2CC</targetPk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>F9653F57-51E7-D3D1-7FB4-500BFE694623</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>8C3BB523-B0E9-C152-7B0C-AB08C1B9DC1C</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

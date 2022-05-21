@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="service_invoice" directorySegmentName="seg_0" id="E22C655E-4CD8-7F62-2D5E-36368ABD8A34">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:07:14 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<sourcePk>46EDD4C5-AA4C-8A51-0995-FC4CEC2A3BD5</sourcePk>
+<targetPk>F43A828D-1BEF-A499-4AA2-91DA56752617</targetPk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>F9653F57-51E7-D3D1-7FB4-500BFE694623</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>F82033F6-72D9-27D8-9FF1-7BFEF90E4C31</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

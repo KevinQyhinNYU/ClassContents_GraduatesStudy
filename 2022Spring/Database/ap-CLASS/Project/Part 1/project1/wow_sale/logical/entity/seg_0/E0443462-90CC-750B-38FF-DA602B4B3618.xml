@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E0443462-90CC-750B-38FF-DA602B4B3618" name="ZCQ_coupon_cust">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 19:58:45 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="c_id" id="07FB6686-BBE5-4AA4-E24F-BA3F60C63AFD">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:08:04 UTC</createdTime>
+<generatorID>BBC11B3F-CDF7-AC04-26F7-8EA2322F20A6</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<referedAttribute>EF53F564-E6D2-7C27-721D-5A20E522B910</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="coupon_id" id="B7032A63-2BE6-3D89-2A73-9B35F814B9B4">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:08:26 UTC</createdTime>
+<generatorID>5828FA61-C250-A21F-711C-33DDD1E1B4B8</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<referedAttribute>640D7132-31F5-26B7-5C68-5F06096854DB</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="coupon_type" id="0ACF812E-554B-FF2D-1615-616D7A755EE2">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:14:21 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F5CDB65A-4789-65ED-9D4C-C6AABF0F491F" name="ZCQ_coupon_cust PK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:08:04 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>07FB6686-BBE5-4AA4-E24F-BA3F60C63AFD</attributeRef>
+<attributeRef>B7032A63-2BE6-3D89-2A73-9B35F814B9B4</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

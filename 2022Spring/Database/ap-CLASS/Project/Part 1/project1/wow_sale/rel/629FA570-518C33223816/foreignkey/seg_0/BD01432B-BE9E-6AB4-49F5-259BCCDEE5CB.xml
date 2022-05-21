@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="BD01432B-BE9E-6AB4-49F5-259BCCDEE5CB" containerWithKeyObject="D8FEB7FF-389A-B9B1-9FBC-135B70ECB5AB" localFKIndex="797B46B8-0215-856A-1D62-E034D8C115EF" name="ZCQ_rental_service_ZCQ_coupon_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>AD840759-B3E8-50B0-D3C6-51A999EAEB2B</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<referredTableLongName>ZCQ_coupon</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>BFEAF804-17FB-92C0-A3EA-04CB9ACF70C4</referredTableID>
+<keyObject>88C8A591-A297-98E7-8247-C75E8DF9FB14</keyObject>
+<referredKeyID>88C8A591-A297-98E7-8247-C75E8DF9FB14</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>coupon_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="wow_sale" id="72210489-3561-D1B5-4351-7032AA9499A3" version="3.5">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 18:57:04 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>72210489-3561-D1B5-4351-7032AA9499A3</designId>
+</OSDM_Design>

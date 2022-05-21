@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5EB7CC4F-F4A3-FD14-B9E7-0B7E68D7EC26" containerWithKeyObject="8F225FF7-81F7-9505-249E-33DFBA35BDF6" localFKIndex="A38B9B8F-1FF1-75A6-9505-BF5A87C62EED" name="ZCQ_vehicle_ZCQ_office_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>FBDE811A-A898-2FA9-8FFB-7DA7A33696F9</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<referredTableLongName>ZCQ_office</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>D32F2EFA-7152-9653-8B75-927B3F70E2B4</referredTableID>
+<keyObject>FFF61FD1-67A6-A640-A7A9-A5036E5015EE</keyObject>
+<referredKeyID>FFF61FD1-67A6-A640-A7A9-A5036E5015EE</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ofc_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

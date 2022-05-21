@@ -1,0 +1,281 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D8FEB7FF-389A-B9B1-9FBC-135B70ECB5AB" name="ZCQ_rental_service">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>F9653F57-51E7-D3D1-7FB4-500BFE694623</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="service_id" id="3F87691A-9068-1E9B-B0BE-2CB0B035CF0D">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>A71CDE49-405A-A407-D7A5-E1856B611D57</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="p_date" id="7D2E8C4A-7291-E4B9-B011-D9EA49F5A589">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>59B9270F-484A-A510-5ECA-8ED46EFA512B</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="d_date" id="6275FB56-64C0-29EA-EC05-79042299A66A">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>74D74ADA-F636-A421-B0ED-F516BA63572B</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="s_odometer" id="7863CFDF-D903-567B-6173-DD148D3604A4">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>29EC8A7F-F3E8-17FE-1352-E1C0E528D92D</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="e_odometer" id="CB053AC1-AE10-238F-B899-AAA6EF06DAC3">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>4CFA9397-A582-F7B6-6FC7-3E38401CF4AF</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="odometer_limit" id="AF52D454-F54F-2701-1AFE-4420FFA63EF6">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>EF53C05A-BE42-A5DA-BE6B-97AD8AE368E6</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="VIN" id="DF71478D-908F-B2C6-6EB7-C78BA6072F03">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>6EF6DEA6-E529-08B9-7A2A-B9E15DA51217</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="688472D6-E688-E2A9-19AE-69C8DFD20DFB" referredColumn="A9952674-7E04-231E-3DFF-2EF17C692BFC"/>
+</associations>
+</Column>
+<Column name="drop_loc" id="88EB88C7-BDD4-6DF6-7EAB-4E4A012C758A">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>76E7C504-2809-B55D-F30C-CB79EDA32D5D</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DD41A917-FA05-DB4C-63D3-AC99E906AA49" referredColumn="C03F4BDB-1A78-0EF5-13E0-5306DFEAE4B7"/>
+</associations>
+</Column>
+<Column name="pickup_loc" id="7CA8E28B-ED29-302E-3545-EEDC3DDD4585">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>D1E296FE-699F-5DC7-841C-5EC5DE52A3B2</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="66A66E38-E5F0-E71E-10ED-6DF509C48003" referredColumn="C03F4BDB-1A78-0EF5-13E0-5306DFEAE4B7"/>
+</associations>
+</Column>
+<Column name="invo_id" id="A63697C5-15D1-3BC6-14DD-FC304B97AB3E">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>9ABC4C93-56B7-D0E0-CFE2-55E0E7201962</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C5DCA3D0-F37D-31F8-AA6F-067E9D6235F7" referredColumn="D8B1C517-E50A-4DF2-3354-57B59AEE1BEF"/>
+</associations>
+</Column>
+<Column name="coupon_id" id="AFD0189B-51AA-ABF5-2961-304DCAE1A958">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>03218721-B956-2680-271A-CE92B3A8EBFA</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BD01432B-BE9E-6AB4-49F5-259BCCDEE5CB" referredColumn="83650C2E-8A35-BEC2-8B72-2A759287F928"/>
+</associations>
+</Column>
+<Column name="c_id" id="9C3BDF8E-0C5A-D9AE-91E6-4A6A679DC1F3">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>75A73526-218C-2D31-C3CD-B425BDB501BD</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CBF71F8E-A827-8B8D-D41F-C3C52CC34AF0" referredColumn="6F6FA631-36AF-C384-36FB-F26D43B1A5F2"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="412D7FDD-1A39-38B4-8189-26128EFAA98B" name="ZCQ_rental_service_PK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>46EDD4C5-AA4C-8A51-0995-FC4CEC2A3BD5</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3F87691A-9068-1E9B-B0BE-2CB0B035CF0D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1367AAB2-F2AB-F66A-3CA4-4B8AF4BF816F" name="ZCQ_rental_service__IDX">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>E22C655E-4CD8-7F62-2D5E-36368ABD8A34</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="A63697C5-15D1-3BC6-14DD-FC304B97AB3E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7C57B4A3-AC39-361A-BAD1-94AEF7685AB8" name="ZCQ_rental_service__IDXv1">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>AD840759-B3E8-50B0-D3C6-51A999EAEB2B</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="AFD0189B-51AA-ABF5-2961-304DCAE1A958"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0C110019-3F7B-82F7-A714-98A727813FD1" name="ZCQ_rental_service_ZCQ_invoice_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>E22C655E-4CD8-7F62-2D5E-36368ABD8A34</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A63697C5-15D1-3BC6-14DD-FC304B97AB3E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4ED57F02-385C-50CA-033D-79DE04CF0E0C" name="ZCQ_rental_service_ZCQ_customer_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>3A838C38-E563-1AEF-9499-7008BF3A1705</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9C3BDF8E-0C5A-D9AE-91E6-4A6A679DC1F3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="31B983E6-65E3-6F4A-1D17-833F1DE9AB42" name="ZCQ_rental_service_ZCQ_office_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>42AEEBEB-1E8F-1732-E0C7-3520FAA708E6</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7CA8E28B-ED29-302E-3545-EEDC3DDD4585"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="90B0C4E6-AB23-1F41-0D5D-63C6F1B8A003" name="ZCQ_rental_service_ZCQ_office_FKv2">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>B0217611-16C6-C7D0-2F30-0FE30B46786F</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="88EB88C7-BDD4-6DF6-7EAB-4E4A012C758A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="797B46B8-0215-856A-1D62-E034D8C115EF" name="ZCQ_rental_service_ZCQ_coupon_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>AD840759-B3E8-50B0-D3C6-51A999EAEB2B</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AFD0189B-51AA-ABF5-2961-304DCAE1A958"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="19AA8393-A085-2D77-6495-C914C3CC7448" name="ZCQ_rental_service_ZCQ_vehicle_FK">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:43:30 UTC</createdTime>
+<generatorID>CAB75185-DE82-6131-9FFA-04C76966A99E</generatorID>
+<ownerDesignName>wow_sale</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DF71478D-908F-B2C6-6EB7-C78BA6072F03"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

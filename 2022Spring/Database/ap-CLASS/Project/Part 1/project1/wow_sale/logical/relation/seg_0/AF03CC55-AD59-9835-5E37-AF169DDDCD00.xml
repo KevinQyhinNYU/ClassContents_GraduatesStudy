@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="ZCQ_corp_emp_relation" directorySegmentName="seg_0" id="AF03CC55-AD59-9835-5E37-AF169DDDCD00">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:11:32 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<sourcePk>BA86B535-3CA7-D9DA-8592-8C2FFE566874</sourcePk>
+<identifying>true</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>D4E46755-BD42-B58D-4C5B-408B82481D35</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>6AE641EB-9C73-17C9-965C-171D7D318C74</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

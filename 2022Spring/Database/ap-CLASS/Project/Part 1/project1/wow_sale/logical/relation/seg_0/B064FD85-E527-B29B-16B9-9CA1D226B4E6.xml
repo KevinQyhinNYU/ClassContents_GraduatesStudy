@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="ZCQ_invoice_payment_relation" directorySegmentName="seg_0" id="B064FD85-E527-B29B-16B9-9CA1D226B4E6">
+<createdBy>aaronkb</createdBy>
+<createdTime>2022-04-06 20:07:36 UTC</createdTime>
+<ownerDesignName>wow_sale</ownerDesignName>
+<engineerTo>
+<item key="629FA570-B614-3E96-F38F-518C33223816" value="true"/>
+</engineerTo>
+<sourcePk>F43A828D-1BEF-A499-4AA2-91DA56752617</sourcePk>
+<identifying>true</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>F82033F6-72D9-27D8-9FF1-7BFEF90E4C31</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>50DB4B14-9A76-6F25-BDB8-F106C816F602</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
