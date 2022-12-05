@@ -71,6 +71,14 @@ class RegisterFile(object):
     def writeRF(self, Reg_addr, Wrt_reg_data):
         # Fill in
         pass
+        binaryDataList = []
+        while Wrt_reg_data > 0:
+            binaryDataList.append(bin(Wrt_reg_data & 255)[2:])
+            Wrt_reg_data = Wrt_reg_data >> 8
+        binaryDataList.reverse()
+
+        for i, byteData in enumerate(binaryDataList):
+            self.Registers[Reg_addr + i] = binaryDataList[i]
 
     def outputRF(self, cycle):
         op = ["-" * 70 + "\n", "State of RF after executing cycle:" + str(cycle) + "\n"]
@@ -88,7 +96,7 @@ class State(object):
         self.IF = {"nop": False, "PC": 0}
         self.ID = {"nop": False, "Instr": 0}
         self.EX = {"nop": False, "Read_data1": 0, "Read_data2": 0, "Imm": 0, "Rs": 0, "Rt": 0, "Wrt_reg_addr": 0, "is_I_type": False, "rd_mem": 0,
-                   "wrt_mem": 0, "alu_op": 0, "wrt_enable": 0}
+                   "wrt_mem": 0, "alu_op": 0, "wrt_enable": 0}  # rs -- rs1, rt -- rs2
         self.MEM = {"nop": False, "ALUresult": 0, "Store_data": 0, "Rs": 0, "Rt": 0, "Wrt_reg_addr": 0, "rd_mem": 0,
                     "wrt_mem": 0, "wrt_enable": 0}
         self.WB = {"nop": False, "Wrt_data": 0, "Rs": 0, "Rt": 0, "Wrt_reg_addr": 0, "wrt_enable": 0}
@@ -113,8 +121,45 @@ class SingleStageCore(Core):
 
     def step(self):
         # Your implementation
+        # Instruction Fetch
+        self.state.ID["Instr"] = self.ext_imem.readInstr(self.state.IF["PC"])
 
-        self.halted = True
+        # Instruction decode, Register Read, Generate Control Signals
+        current_instruction = self.state.ID["Instr"]
+        current_instruction_opcode = current_instruction & 127  # opcode is the last 7 bits [6:0]
+
+        if current_instruction_opcode == 51:  # is R-type
+            self.EX["is_I_type"] = False
+            self.state.EX["Wrt_reg_addr"] = current_instruction & 3968  # Get inst[11:7] -- rd
+            self.state.EX["Rs"] = current_instruction & 1015808  # Get inst[19:15] -- rs1
+            self.state.EX["Rt"] = current_instruction & 32505856  # Get inst[24:20] -- rs2
+        elif current_instruction_opcode == 19:  # is I-type
+            self.EX["is_I_type"] = True
+            self.state.EX["Wrt_reg_addr"] = current_instruction & 3968
+            self.state.EX["Rs"] = current_instruction & 1015808  # Get inst[19:15] -- rs1
+            self.state.EX["Imm"] = current_instruction & 4293918720  # Get inst[31:20] -- imm
+        elif current_instruction_opcode == 111:  # is JAL
+            self.EX["is_I_type"] = False
+            self.state.EX["Wrt_reg_addr"] = current_instruction & 3968  # Get inst[11:7] -- rd
+        elif current_instruction_opcode == 99:  # is bne/ beq
+            self.EX["is_I_type"] = False
+            self.state.EX["Rs"] = current_instruction & 1015808  # Get inst[19:15] -- rs1
+            self.state.EX["Rt"] = current_instruction & 32505856  # Get inst[24:20] -- rs2
+        elif current_instruction_opcode == 3:  # is LW
+            self.EX["is_I_type"] = False
+            self.state.EX["Wrt_reg_addr"] = current_instruction & 3968  # Get inst[11:7] -- rd
+        elif current_instruction_opcode == 35:  # is SW
+            self.state.EX["Rs"] = current_instruction & 1015808  # Get inst[19:15] -- rs1
+            self.state.EX["Rt"] = current_instruction & 32505856  # Get inst[24:20] -- rs2
+            self.EX["is_I_type"] = False
+        else:  # is Halt
+            self.nextState.IF["nop"] = True
+
+        # Execute the instruction
+        # Memory access
+        # Write back to Registers
+
+        # self.halted = True
         if self.state.IF["nop"]:
             self.halted = True
 
